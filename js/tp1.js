@@ -1,43 +1,30 @@
-/* Auteurs: PERSONNE 1 (matricule), PERSONNE 2 (matricule)
-
-   TODO : Remplacez ce commentaire par un commentaire expliquant
-   l'utilité de ce programme
- */
-
 function noirEtBlanc(imageOriginale) {
+  console.log(imageOriginale);
   for (x = 0; x < imageOriginale.length; x++) {
-    for (y = 0; y < imageOriginale[0].length; y++)
-      imageOriginale[x][y] = {
-        r:imageOriginale[x][y].r * 0.2126 + imageOriginale[x][y].g * 0.7152 + imageOriginale[x][y].b * 0.0722,
-        g:imageOriginale[x][y].r * 0.2126 + imageOriginale[x][y].g * 0.7152 + imageOriginale[x][y].b * 0.0722,
-        b:imageOriginale[x][y].r * 0.2126 + imageOriginale[x][y].g * 0.7152 + imageOriginale[x][y].b * 0.0722,
-      }
-      // imageOriginale[x][y].r = 0;
-      // imageOriginale[x][y].g = 0;
-      // imageOriginale[x][y].b = 0;
-
-      // console.log(x);
-      // // console.log(y);
-      // if (x < 10 && y < 10) {
-      //   console.log(imageOriginale[x][y])
-      //   console.log("hi")
-      // }
-
-
+    for (y = 0; y < imageOriginale[0].length; y++) {
+      var r = imageOriginale[x][y].r * 0.2126;
+      var g = imageOriginale[x][y].g * 0.7152;
+      var b = imageOriginale[x][y].b * 0.0722;
+      var rgb = r + g + b
+      imageOriginale[x][y] = {r: rgb, g: rgb, b: rgb}
+    }
   }
-  return imageOriginale; // Remplacer par la nouvelle image
+  return imageOriginale;
 }
 
-function correctionClarte(imageOriginale, quantite) { // image.length = 465
-    for (var i = 0; i < imageOriginale.length; i++)
-    console.log(imageOriginale[i][i]); // TODO : Compléter cette fonction
-    return imageOriginale; // Remplacer par la nouvelle image
+function correctionClarte(imageOriginale, quantite) {
+  for (x = 0; x < imageOriginale.length; x++) {
+    for (y = 0; y < imageOriginale[0].length; y++) {
+      var a = imageOriginale[x][y].r * 0.2126;
+      var b = imageOriginale[x][y].g * 0.7152;
+      var c = imageOriginale[x][y].b * 0.0722;
+      imageOriginale[x][y] = {r: a + b + c, g: a + b + c, b: a + b + c}
+    }
+  }
+  return imageOriginale;
 }
-   /* for (var x = 0, imageOriginale.length, x++) {
-        for (var y = 0, imageOriginale.length, y++) {
-          imageOriginale.y =
-        }
-    }*/
+
+
 
 function flou(imageOriginale, taille) {
   for (var i = 10; i < imageOriginale.length - 10; i++) {
